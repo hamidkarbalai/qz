@@ -12,11 +12,11 @@
 
         var defaults = {
             questions: null,
-            twitterStatus: 'I scored {score} on this awesome + quiz! http://hamidkarbalai.com/p/quizs',
+            twitterStatus: 'I scored {score} on this awesome + quiz! ',
             startText: 'بِسمِ اللہِ الرّحمٰانِ الرّحیم',
             endText: 'Finished!',
-            splashImage: 'img/start.png',
-            twitterImage: 'img/share.png',
+            splashImage: 'https://hamidkarbalai.github.io/qz/img/start.png',
+            twitterImage: 'https://hamidkarbalai.github.io/qz/img/share.png',
             resultComments: {
                 perfect: 'Perfect!',
                 excellent: 'Excellent!',
