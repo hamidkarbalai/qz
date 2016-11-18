@@ -1,4 +1,4 @@
-﻿/**
+/**
  * --------------------------------------------------------------------
  * Islamic Quiz Created in Urdu 
  * by Hamid Karbalai - www.hamidkarbalai.com
@@ -8,15 +8,15 @@
  **/
 (function ($) {
 
-    $.fn.hamid = function (settings) {
+    j.fn.hamid = function (settings) {
 
         var defaults = {
             questions: null,
-            twitterStatus: 'I scored {score} on this awesome + quiz! ',
+            twitterStatus: 'I scored {score} on this awesome + quiz! http://hamidkarbalai.com/p/quizs',
             startText: 'بِسمِ اللہِ الرّحمٰانِ الرّحیم',
             endText: 'Finished!',
-            splashImage: 'https://hamidkarbalai.github.io/qz/img/start.png',
-            twitterImage: 'https://hamidkarbalai.github.io/qz/img/share.png',
+            splashImage: 'img/start.png',
+            twitterImage: 'img/share.png',
             resultComments: {
                 perfect: 'Perfect!',
                 excellent: 'Excellent!',
@@ -29,13 +29,13 @@
 
         };
 
-        var config = $.extend(defaults, settings);
+        var config = j.extend(defaults, settings);
         if (config.questions === null) {
             $(this).html('<div class="intro-container slide-container"><h2 class="qTitle">Failed to parse questions.</h2></div>');
             return;
         }
 
-        var superContainer = $(this),
+        var superContainer = j(this),
             answers = [],
             introFob = '	<div class="intro-container slide-container"><div class="question-number">' + config.startText + '</div><a class="nav-start" href="#"><img src="' + config.splashImage + '" /></a></div>	',
             exitFob = '<div class="results-container slide-container"><div class="question-number">' + config.endText + '</div><div class="result-keeper"></div></div><div class="notice">Please select an option</div><div class="progress-keeper" ><div class="progress"></div></div>',
