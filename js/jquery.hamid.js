@@ -12,7 +12,7 @@
 
         var defaults = {
             questions: null,
-            twitterStatus: 'I scored {score} on this awesome + quiz! http://hamidkarbalai.com/p/quizs',
+            twitterStatus: 'I scored {score} on this awesome + quiz!',
             startText: 'بِسمِ اللہِ الرّحمٰانِ الرّحیم',
             endText: 'Finished!',
             splashImage: 'img/start.png',
@@ -31,7 +31,7 @@
 
         var config = j.extend(defaults, settings);
         if (config.questions === null) {
-            $(this).html('<div class="intro-container slide-container"><h2 class="qTitle">Failed to parse questions.</h2></div>');
+            j(this).html('<div class="intro-container slide-container"><h2 class="qTitle">Failed to parse questions.</h2></div>');
             return;
         }
 
@@ -110,7 +110,7 @@
         slidesList.hide().first().fadeIn(500);
 
         superContainer.find('li').click(function () {
-            var thisLi = $(this);
+            var thisLi = j(this);
 
             if (thisLi.hasClass('selected')) {
                 thisLi.removeClass('selected');
@@ -122,8 +122,8 @@
 
         superContainer.find('.nav-start').click(function () {
 
-            $(this).parents('.slide-container').fadeOut(500, function () {
-                $(this).next().fadeIn(500);
+            j(this).parents('.slide-container').fadeOut(500, function () {
+                j(this).next().fadeIn(500);
                 progressKeeper.fadeIn(500);
             });
             return false;
@@ -132,14 +132,14 @@
 
         superContainer.find('.next').click(function () {
 
-            if ($(this).parents('.slide-container').find('li.selected').length === 0) {
+            if (j(this).parents('.slide-container').find('li.selected').length === 0) {
                 notice.fadeIn(300);
                 return false;
             }
 
             notice.hide();
-            $(this).parents('.slide-container').fadeOut(500, function () {
-                $(this).next().fadeIn(500);
+            j(this).parents('.slide-container').fadeOut(500, function () {
+                j(this).next().fadeIn(500);
             });
             progress.animate({
                 width: progress.width() + Math.round(progressWidth / questionLength)
@@ -149,8 +149,8 @@
 
         superContainer.find('.prev').click(function () {
             notice.hide();
-            $(this).parents('.slide-container').fadeOut(500, function () {
-                $(this).prev().fadeIn(500);
+            j(this).parents('.slide-container').fadeOut(500, function () {
+                j(this).prev().fadeIn(500);
             });
 
             progress.animate({
@@ -160,13 +160,13 @@
         });
 
         superContainer.find('.final').click(function () {
-            if ($(this).parents('.slide-container').find('li.selected').length === 0) {
+            if (j(this).parents('.slide-container').find('li.selected').length === 0) {
                 notice.fadeIn(300);
                 return false;
             }
 
             superContainer.find('li.selected').each(function (index) {
-                userAnswers.push($(this).parents('.answers').children('li').index($(this).parents('.answers').find('li.selected')) + 1);
+                userAnswers.push(j(this).parents('.answers').children('li').index(j(this).parents('.answers').find('li.selected')) + 1);
             });
 
             progressKeeper.hide();
@@ -197,19 +197,19 @@
 
             }
             score = roundReloaded(trueCount / questionLength * 100, 2);
-            shareButton = '<a href="http://twitter.com/share?text=' + config.twitterStatus.replace("{score}", score) + '&via=HamidKarbalai.com" class="share-button"><img src="' + config.twitterImage + '" /></a>';
+            shareButton = '<a href="http://twitter.com/share?text=' + config.twitterStatus.replace("{score}", score) + '&via=HamidKarbalai" class="share-button"><img src="' + config.twitterImage + '" /></a>';
 
 
             resultSet = '<h2 class="qTitle">' + judgeSkills(score) + ' آپکا سکور ' + score + '%</h2>' + shareButton + resultSet + '<div class="hamid-clear"></div>';
             superContainer.find('.result-keeper').html(resultSet).show(500);
             superContainer.find('.resultsview-qhover').hide();
             superContainer.find('.result-row').hover(function () {
-                $(this).find('.resultsview-qhover').show();
+                j(this).find('.resultsview-qhover').show();
             }, function () {
-                $(this).find('.resultsview-qhover').hide();
+                j(this).find('.resultsview-qhover').hide();
             });
-            $(this).parents('.slide-container').fadeOut(500, function () {
-                $(this).next().fadeIn(500);
+            j(this).parents('.slide-container').fadeOut(500, function () {
+                j(this).next().fadeIn(500);
             });
             return false;
         });
